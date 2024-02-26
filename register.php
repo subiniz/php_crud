@@ -41,7 +41,7 @@ if(isset($_SESSION['email'])) {
             </div>
             <div class="form-group">
                 <label for="confirm_password">Confirm Password:</label>
-                <input type="confirm_password" id="confirm_password" name="confirm_password" onkeyup="validatePassword()" required>
+                <input type="password" id="confirm_password" name="confirm_password" onkeyup="validatePassword()" required>
             </div>
             <div class="form-group">
                 <span class="error-text" id="password_error_msg" style="display: none;">The password doesn't match</span>

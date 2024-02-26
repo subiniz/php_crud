@@ -1,15 +1,17 @@
 <?php
 session_start();
 require_once '../database.php';
+$conn = db_connect();
 
 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])){
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
     $enc_password = hash('sha256', $password);
+    $enc_confirm_password = hash('sha256', $confirm_password);
 
-    if($password == $confirm_password){
-        $enc_password = hash('sha256', $password);
+    if($enc_password == $enc_confirm_password){
         $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$enc_password')";
         if(mysqli_query($conn, $sql)){
             $_SESSION['success'] = 'You have successfully registered';
